@@ -45,3 +45,5 @@ window.countNQueensSolutions = function(n) {
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
+// var thing = new Board([1,0,0], [1,0,0], [1,0,0], [1,0,0])
+// console.log(thing)
