@@ -85,7 +85,7 @@
 
     hasRowConflictAt: function(rowIndex) {
       // var count = 0;
-
+// console.log("here" + 'hasRowConflictAt')
       if (this.rows()[rowIndex].reduce(function(a,b){
         return a+b
       }) > 1){
@@ -107,7 +107,7 @@
     hasAnyRowConflicts: function() {
       // var count = 0;
       // console.log(this.rows())
-      console.log(this.rows());
+      // console.log("here");
       for (var i = 0; i< this.rows().length; i++){
         // console.log(this.get(i))
         //this should select all of the rows
@@ -128,12 +128,61 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
-    },
+      // //for loop to refer to 0 index 
+
+      // // console.log('IM HEREEEE')  
+      // for (var i = 0; i < this.rows().length; i++) {
+
+      //   console.log('index outside', i); 
+
+      //   var count = 0; 
+
+      //   for (var a = 0; a < this.rows().length; a++) {
+      //     console.log('index inside', a);
+      //     if (this.rows[a][i] === 1) {
+      //       count++; 
+      //     }
+      //   }
+
+      //   if (count > 1) {
+      //     return true; 
+      //   } 
+        //this.rows[i][i] === 0?
+        //this.rows[1][i] === 0?
+        //this.rows[2][i] === 0?
+        //this.rows[3][i] === 0? 
+    //   }
+
+
+
+
+    //   return false; // fixme
+     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      console.log("here")
+
+      for (var i = 0; i < this.rows().length; i++) {
+
+        console.log('index outside', i); 
+
+        var count = 0; 
+
+        for (var a = 0; a < this.rows().length; a++) {
+          console.log('index inside', a);
+          if (this.rows()[a][i] === 1) {
+            count++; 
+          }
+        }
+
+        if (count > 1) {
+          return true; 
+        } 
+      }
+
+      return false; 
+        
     },
 
 
