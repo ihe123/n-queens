@@ -152,33 +152,25 @@
         //this.rows[2][i] === 0?
         //this.rows[3][i] === 0? 
     //   }
+      var numQueens = 0;
+      for (var i = 0; i<this.rows().length; i++){
+        if(this.rows()[i][colIndex]>0){
+          numQueens++
+        }
+      }
+      if(numQueens>1){
+        return true;
+      }
+      return false;
+    },
 
-
-
-
-    //   return false; // fixme
-     },
-
-    // test if any columns on this board contain conflicts
+    
     hasAnyColConflicts: function() {
-      console.log("here")
 
       for (var i = 0; i < this.rows().length; i++) {
-
-        console.log('index outside', i); 
-
-        var count = 0; 
-
-        for (var a = 0; a < this.rows().length; a++) {
-          console.log('index inside', a);
-          if (this.rows()[a][i] === 1) {
-            count++; 
-          }
+        if(this.hasColConflictAt(i) === true){
+          return true;
         }
-
-        if (count > 1) {
-          return true; 
-        } 
       }
 
       return false; 
@@ -193,21 +185,13 @@
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       var count = majorDiagonalColumnIndexAtFirstRow; 
-      var sum = 0; 
-
-      //starting column index for the main diagonal
-      //probably have to set to a dynamic value using helper function??
-
+      var sum = 0;
       
         for (var i = 0; i < this.rows().length; i++){
-
-          //if the value is 1 
           if (this.rows()[i][count] === 1) {
             sum++; 
           }
-
           count++; 
-        
       }
 
       if (sum > 1) {
@@ -221,7 +205,7 @@
       // var results = []; 
       var result = false;
       var n = this.rows().length;
-      var numOfDiagonals = (this.rows().length * 2) - 1;
+      var numOfDiagonals = (n * 2) - 1;
 
       for (var i = (n - 1)*-1; i < n; i++) {
 
@@ -235,41 +219,34 @@
     },
 
 
-
-      //for loop to generate row and column values 
-
-       _getFirstRowColumnIndexForMajorDiagonalOn: function(rowIndex, colIndex) {
-      return colIndex - rowIndex;
-      //gives us values that correspond to grid 
-      //also corresponds to majorDiagonalColumnIndexAtFirstRow 
-
-
-      //use major diagonal function to create/test for conflicts on that diagonal
-        //runs the conflict test and returns true or false if conflict 
-
-
-
-
-
-
-
-
-      return false; // fixme
-    },
-
-
-
     // Minor Diagonals - go from top-right to bottom-left
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var colIndex = minorDiagonalColumnIndexAtFirstRow;
+      var numQueens = 0;
+      for (var i = 0; i<this.rows().length; i++){
+        if (this.rows()[i][colIndex] === 1){
+          numQueens++;
+        }
+        colIndex--;
+      }
+      if(numQueens >1 ){
+        return true;
+      }
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      var n = this.rows().length;
+      for (var i = (2*n)-1; i>0; i--){
+        if (this.hasMinorDiagonalConflictAt(i) === true){
+          return true;
+        }
+      }
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
