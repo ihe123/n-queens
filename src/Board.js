@@ -192,11 +192,66 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var count = majorDiagonalColumnIndexAtFirstRow; 
+      var sum = 0; 
+
+      //starting column index for the main diagonal
+      //probably have to set to a dynamic value using helper function??
+
+      
+        for (var i = 0; i < this.rows().length; i++){
+
+          //if the value is 1 
+          if (this.rows()[i][count] === 1) {
+            sum++; 
+          }
+
+          count++; 
+        
+      }
+
+      if (sum > 1) {
+        return true; 
+      }
+        return false; // fixme
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
+      // var results = []; 
+      var n = this.rows().length;
+      var numOfDiagonals = (this.rows().length * 2) - 1;
+
+      for (i = (-n + 1); i < numOfDiagonals; i++) {
+        //var diagonal = _getFirstRowColumnIndexForMajorDiagonalOn(i, 
+        if (hasMajorDiagonalConflictAt(i) === true) {
+          return true; 
+        }
+      }
+
+      return false; 
+    },
+
+
+
+      //for loop to generate row and column values 
+
+       _getFirstRowColumnIndexForMajorDiagonalOn: function(rowIndex, colIndex) {
+      return colIndex - rowIndex;
+      //gives us values that correspond to grid 
+      //also corresponds to majorDiagonalColumnIndexAtFirstRow 
+
+
+      //use major diagonal function to create/test for conflicts on that diagonal
+        //runs the conflict test and returns true or false if conflict 
+
+
+
+
+
+
+
+
       return false; // fixme
     },
 
