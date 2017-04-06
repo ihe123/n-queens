@@ -219,17 +219,19 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       // var results = []; 
+      var result = false;
       var n = this.rows().length;
       var numOfDiagonals = (this.rows().length * 2) - 1;
 
-      for (i = (-n + 1); i < numOfDiagonals; i++) {
+      for (var i = (n - 1)*-1; i < n; i++) {
+
         //var diagonal = _getFirstRowColumnIndexForMajorDiagonalOn(i, 
-        if (hasMajorDiagonalConflictAt(i) === true) {
-          return true; 
+        if (this.hasMajorDiagonalConflictAt(i) === true) {
+          result = true;
         }
       }
 
-      return false; 
+      return result; 
     },
 
 
